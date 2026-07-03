@@ -1,4 +1,4 @@
-package com.spk.foodorderingapp.model;
+package com.spk;
 
 public class Payment {
 
@@ -11,8 +11,17 @@ public class Payment {
         this.amount = amount;
         this.status = "Pending";
     }
+
     public void makePayment() {
+        status = "Completed";
+        System.out.println("Payment of ₹" + amount + " successful");
     }
+
     public void verifyPayment() {
+        if (status.equals("Completed")) {
+            System.out.println("Payment verified");
+        } else {
+            System.out.println("Payment not completed");
+        }
     }
 }

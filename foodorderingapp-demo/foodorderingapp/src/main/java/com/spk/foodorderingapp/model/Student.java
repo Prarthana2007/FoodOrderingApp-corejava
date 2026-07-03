@@ -1,11 +1,11 @@
-package com.spk.foodorderingapp.model;
+package com.spk;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends User {
 
-    private List<FoodItem> cart;
+    private List<OrderItem> cart;
     private List<Order> orderHistory;
 
     public Student(int userId, String name, String phoneNumber, String email) {
@@ -18,12 +18,14 @@ public class Student extends User {
     }
     public void addToCart(FoodItem item) {
         if (item.isAvailable()) {
-            cart.add(item);
+            OrderItem orderItem = new OrderItem(item, 1);
+            cart.add(orderItem);
             System.out.println(item.getName() + " added to cart.");
         } else {
             System.out.println("Sorry, " + item.getName() + " is unavailable.");
         }
     }
+
     public Order placeOrder(int orderId) {
 
         if (cart.isEmpty()) {
@@ -33,9 +35,8 @@ public class Student extends User {
 
         Order order = new Order(orderId);
 
-        for (FoodItem item : cart) {
-            OrderItem orderItem = new OrderItem(item, 1);
-            order.addItem(orderItem);
+        for (OrderItem item : cart) {
+            order.addItem(item);
         }
 
         System.out.println("Order placed successfully!");

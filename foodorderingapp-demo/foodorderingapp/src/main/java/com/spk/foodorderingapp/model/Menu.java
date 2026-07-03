@@ -1,4 +1,4 @@
-package com.spk.foodorderingapp.model;
+package com.spk;
 
 import java.util.*;
 
@@ -19,6 +19,10 @@ public class Menu {
     }
 
     public void displayItems() {
+        for (FoodItem item : items) {
+            System.out.println(item.getItemId() + " - " +
+                    item.getName() + " - ₹" + item.getPrice());
+        }
     }
 
     public List<FoodItem> getItems() {

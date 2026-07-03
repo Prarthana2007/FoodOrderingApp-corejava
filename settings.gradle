@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = 'FoodOrderingApp'
-include('app')
+include(':foodorderingapp-demo:foodorderingapp')

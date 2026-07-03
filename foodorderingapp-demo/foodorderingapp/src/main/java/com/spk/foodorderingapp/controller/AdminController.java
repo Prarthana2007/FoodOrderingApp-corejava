@@ -1,26 +1,30 @@
 package com.spk.foodorderingapp.controller;
 
+import com.spk.FoodItem;
+import com.spk.foodorderingapp.service.AppDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.spk.foodorderingapp.service.AdminService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
 public class AdminController {
 
     @Autowired
-    private AdminService service;
+    private AppDataService dataService;
 
-    // Add Item
     @PostMapping("/add-item")
-    public String addItem() {
-        return service.addItem();
+    public String addItem(
+            @RequestParam int itemId,
+            @RequestParam String name,
+            @RequestParam double price,
+            @RequestParam boolean available) {
+        return dataService.addMenuItem(itemId, name, price, available);
     }
 
-    // View Menu
     @GetMapping("/menu")
-    public String viewMenu() {
-        return service.viewMenu();
+    public List<FoodItem> viewMenu() {
+        return dataService.getMenu();
     }
 }

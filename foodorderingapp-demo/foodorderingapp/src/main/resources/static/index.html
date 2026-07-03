@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Bites — College Canteen Ordering</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="page-shell">
+        <header class="topbar">
+            <div class="brand">
+                <div class="brand-mark">CB</div>
+                <div>
+                    <h1>Campus Bites</h1>
+                    <p>Pre-order meals, skip queues, and pay in seconds.</p>
+                </div>
+            </div>
+            <nav class="nav-actions">
+                <button class="nav-button" onclick="scrollToSection('canteens')">Canteens</button>
+                <button class="nav-button" onclick="scrollToSection('menu')">Menu</button>
+                <button class="nav-button" onclick="scrollToSection('orders')">Orders</button>
+                <button class="nav-button" onclick="scrollToSection('payment')">Payment</button>
+            </nav>
+        </header>
+
+        <section class="hero-panel">
+            <div class="hero-copy">
+                <span class="eyebrow">College Canteen App</span>
+                <h2>Skip the queue. Order ahead. Pick up faster.</h2>
+                <p>Campus Bites is built for student life: live menus, easy pre-orders, QR pickup and payment in one simple app.</p>
+                <div class="hero-buttons">
+                    <button onclick="studentLogin()">Student Login</button>
+                    <button onclick="adminLogin()">Admin Login</button>
+                </div>
+            </div>
+            <div class="hero-card hero-image">
+                <div class="hero-stats">
+                    <div>
+                        <strong>3</strong>
+                        <span>Canteens</span>
+                    </div>
+                    <div>
+                        <strong>24</strong>
+                        <span>Dishes</span>
+                    </div>
+                    <div>
+                        <strong>99%</strong>
+                        <span>Queue reduction</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-intro">
+            <div>
+                <h3>Designed for campus canteens</h3>
+                <p>From student orders to canteen pickup, everything is visible in one responsive dashboard. Start with the canteens below and explore the menu, orders, and payment flow.</p>
+            </div>
+        </section>
+
+        <section id="canteens" class="card-grid-section">
+            <div class="section-header">
+                <h3>Active Canteens</h3>
+                <p>Choose your college canteen and explore the kitchen offerings.</p>
+            </div>
+            <div id="canteenGrid" class="card-grid"></div>
+        </section>
+
+        <section id="menu" class="card-grid-section">
+            <div class="section-header">
+                <h3>Live Menu</h3>
+                <p>Browse available dishes and pre-order your favorite campus meals.</p>
+            </div>
+            <div id="menuGrid" class="card-grid"></div>
+        </section>
+
+        <section id="orders" class="panel-row">
+            <div class="panel large-panel">
+                <h3>Student view</h3>
+                <div class="panel-group">
+                    <div class="panel-box">
+                        <h4>Quick order</h4>
+                        <label>Enter order ID</label>
+                        <input id="orderId" type="number" placeholder="101" />
+                        <button onclick="placeOrder()">Place Order</button>
+                    </div>
+                    <div class="panel-box">
+                        <h4>My orders</h4>
+                        <button onclick="loadOrders()">Refresh Orders</button>
+                        <pre id="orderOutput">No orders loaded yet.</pre>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel small-panel">
+                <h4>Admin tools</h4>
+                <label>Item ID</label>
+                <input id="itemId" type="number" placeholder="105" />
+                <label>Dish name</label>
+                <input id="itemName" type="text" placeholder="Falooda" />
+                <label>Price</label>
+                <input id="itemPrice" type="number" step="0.01" placeholder="60" />
+                <label>Available</label>
+                <select id="itemAvailable">
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+                <button onclick="addMenuItem()">Add Menu Item</button>
+                <button onclick="loadMenu()">Refresh Menu</button>
+            </div>
+        </section>
+
+        <section id="payment" class="panel-row">
+            <div class="panel payment-panel">
+                <h3>Pickup & payment</h3>
+                <div class="panel-group">
+                    <div class="panel-box">
+                        <h4>Collect order</h4>
+                        <label>QR token</label>
+                        <input id="qrToken" type="text" placeholder="Paste QR token" />
+                        <button onclick="collectOrder()">Verify & Collect</button>
+                    </div>
+                    <div class="panel-box">
+                        <h4>Pay order</h4>
+                        <label>Order ID</label>
+                        <input id="payOrderId" type="number" placeholder="101" />
+                        <button onclick="payOrder()">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="output-panel">
+            <h3>Activity feed</h3>
+            <pre id="output">Ready to manage campus orders.</pre>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package com.spk.foodorderingapp.model;
+package com.spk;
 
 public class FoodItem {
 

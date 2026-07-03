@@ -1,11 +1,10 @@
-package com.spk.foodorderingapp.model;
+package com.spk;
 
 public class Main {
 
     public static void main(String[] args) {
 
         Menu menu = new Menu();
-
         Admin admin = new Admin(1, "Admin", "9999999999", "admin@gmail.com");
         admin.login();
 
@@ -17,26 +16,28 @@ public class Main {
         admin.addItem(menu, idli);
         admin.addItem(menu, pongal);
 
-        System.out.println("\n Menu After Admin Adds Items");
+        System.out.println("\n--- Menu After Admin Adds Items ---");
         menu.displayItems();
 
         admin.logout();
 
+        System.out.println("\n====================================\n");
+
+        // Create Student
         Student student = new Student(2, "Prarthana", "7777777777", "student@gmail.com");
         student.login();
 
-        System.out.println("\n Student Viewing Menu");
+        System.out.println("\n--- Student Viewing Menu ---");
         student.viewMenu(menu);
 
-        System.out.println("\nStudent Adding Items to Cart");
+        System.out.println("\n--- Student Adding Items to Cart ---");
         student.addToCart(dosa);
-        student.addToCart(pongal);  
+        student.addToCart(pongal);
 
-        System.out.println("\nStudent Placing Order");
+        System.out.println("\n--- Student Placing Order ---");
         student.placeOrder(101);
 
-
-        System.out.println("\nOrder History");
+        System.out.println("\n--- Order History ---");
         student.viewOrderHistory();
 
         student.logout();

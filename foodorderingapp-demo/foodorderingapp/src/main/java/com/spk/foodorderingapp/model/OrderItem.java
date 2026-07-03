@@ -1,4 +1,4 @@
-package com.spk.foodorderingapp.model;
+package com.spk;
 
 public class OrderItem {
 
@@ -10,7 +10,7 @@ public class OrderItem {
         this.quantity = quantity;
     }
 
-    public double getTotalPrice() {  
+    public double getTotalPrice() {
         return foodItem.getPrice() * quantity;
     }
 

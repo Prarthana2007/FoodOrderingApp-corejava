@@ -1,32 +1,36 @@
 package com.spk.foodorderingapp.controller;
 
+import com.spk.foodorderingapp.model.OrderRecord;
+import com.spk.foodorderingapp.service.AppDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import com.spk.foodorderingapp.service.StudentService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/student")
 public class StudentController {
 
     @Autowired
-    private StudentService service;
+    private AppDataService dataService;
 
-    // Login
     @GetMapping("/login")
     public String login() {
-        return service.login();
+        return dataService.loginStudent();
     }
 
-    // Place Order
     @PostMapping("/order")
     public String placeOrder(@RequestParam int orderId) {
-        return service.placeOrder(orderId);
+        return dataService.placeOrder(orderId);
     }
 
-    // View Orders
     @GetMapping("/orders")
-    public String viewOrders() {
-        return service.viewOrders();
+    public List<OrderRecord> viewOrders() {
+        return dataService.getOrders();
+    }
+
+    @PostMapping("/pay")
+    public String payOrder(@RequestParam int orderId) {
+        return dataService.payOrder(orderId);
     }
 }
